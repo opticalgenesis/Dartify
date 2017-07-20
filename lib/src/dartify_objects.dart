@@ -3,6 +3,24 @@
 
 import 'dart:core';
 
+class AuthenticationObject {
+  String code;
+  String state;
+}
+
+class ErrorObject {
+  String error;
+  String state;
+}
+
+class CodeObject {
+  String access_token;
+  String token_type;
+  String scope;
+  int expires_in;
+  String refresh_token;
+}
+
 class FullAlbumObject {
   String album_type;
   List<SimplifiedArtistObject> artists;

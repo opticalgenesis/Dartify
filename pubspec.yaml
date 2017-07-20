@@ -12,3 +12,4 @@ environment:
 
 dev_dependencies:
   test: ^0.12.0
+  cryptoutils: ^0.2.1
