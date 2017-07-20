@@ -7,5 +7,7 @@
 library dartify;
 
 export 'src/dartify_base.dart';
+export 'src/dartify_auth.dart';
+export 'src/dartify_objects.dart';
 
 // TODO: Export any libraries intended for clients of this package.
