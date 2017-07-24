@@ -47,3 +47,5 @@ A simple usage example:
 Please file feature requests and bugs at the [issue tracker][tracker].
 
 [tracker]: http://example.com/issues/replaceme
+
+As of yet, dartify only supports Spotify's implicit grant flow, as either Spotify doesn't support CORS; or I'm not implementing it correctly. Because of this, no refresh token is provided, thus each token is only one use. It is good for 1 hour before it needs re-fetching.
