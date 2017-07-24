@@ -8,5 +8,14 @@ import 'dart:html';
 import 'package:meta/meta.dart';
 
 class DartifyUtils {
+
   static String ALBUM = "/v1/albums/";
+  static String USER_PROFILE_PRIVATE = "/v1/me";
+  static String CURRENTLY_PLAYING = "/v1/me/player/currently-playing";
+
+  static List<String> endpoints = <String>[
+    ALBUM,
+    USER_PROFILE_PRIVATE,
+    CURRENTLY_PLAYING
+  ];
 }

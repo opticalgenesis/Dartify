@@ -28,8 +28,8 @@ abstract class FullAlbumObject {
   List<SimplifiedArtistObject> artists;
   List<String> available_markets;
   List<CopyrightObject> copyrights;
-  ExternalIdObject external_ids;
-  ExternalUrlObject external_urls;
+  Map<String, String> external_ids;
+  Map<String, String> external_urls;
   List<String> genres;
   String href;
   String id;
@@ -45,7 +45,7 @@ abstract class FullAlbumObject {
 }
 
  abstract class SimplifiedArtistObject {
-  ExternalUrlObject external_urls;
+  Map<String, String> external_urls;
   String href;
   String id;
   String name;
@@ -53,19 +53,9 @@ abstract class FullAlbumObject {
   String uri;
 }
 
-abstract class ExternalUrlObject {
-  String key;
-  String value;
-}
-
 abstract class CopyrightObject {
   String text;
   String type;
-}
-
-abstract class ExternalIdObject {
-  String key;
-  String value;
 }
 
 abstract class ImageObject {
@@ -90,7 +80,7 @@ abstract class SimplifiedTrackObject {
   int disc_number;
   int duration_ms;
   bool explicit;
-  ExternalUrlObject external_urls;
+  Map<String, String> external_urls;
   String href;
   String id;
   bool is_playable;
@@ -103,11 +93,80 @@ abstract class SimplifiedTrackObject {
 }
 
 abstract class LinkedTrackObject {
-  ExternalUrlObject external_urls;
+  Map<String, String> external_urls;
   String href;
   String id;
   String type;
   String uri;
+}
+
+abstract class PrivateUserObject {
+  String birthdate;
+  String country;
+  String display_name;
+  dynamic email;
+  Map<String, String> external_urls;
+  FollowersObject followers;
+  String href;
+  String id;
+  List<ImageObject> images;
+  String product;
+  String type;
+  String uri;
+}
+
+abstract class FollowersObject {
+  String href;
+  int total;
+}
+
+abstract class FullTrackObject {
+  SimplifiedAlbumObject album;
+  List<SimplifiedArtistObject> artists;
+  List<String> available_markets;
+  int disc_number;
+  int duration_ms;
+  bool explicit;
+  Map<String, String> external_ids;
+  Map<String, String> external_urls;
+  String href;
+  String id;
+  bool is_playable;
+  LinkedTrackObject linked_from;
+  String name;
+  int popularity;
+  String preview_url;
+  int track_number;
+  String type;
+  String uri;
+}
+
+abstract class CurrentlyPlayingObject {
+  ContextObject context;
+  int timestamp;
+  int progress_ms;
+  bool is_playing;
+  FullTrackObject item;
+}
+
+abstract class SimplifiedAlbumObject {
+  String album_type;
+  List<SimplifiedArtistObject> artists;
+  List<String> available_markets;
+  Map<String, String> external_urls;
+  String href;
+  String id;
+  List<ImageObject> images;
+  String name;
+  String type;
+  String uri;
+}
+
+abstract class ContextObject {
+  String uri;
+  String href;
+  Map<String, String> external_urls;
+  String type;
 }
 
 class FullAlbumImpl extends JsonObject implements FullAlbumObject {
@@ -115,5 +174,21 @@ class FullAlbumImpl extends JsonObject implements FullAlbumObject {
   factory FullAlbumImpl.fromJsonString(String) {
     print("Creating FullAlbumObject");
     return new JsonObject.fromJsonString(String, new FullAlbumImpl());
+  }
+}
+
+class PrivateUserImpl extends JsonObject implements PrivateUserObject {
+  PrivateUserImpl();
+  factory PrivateUserImpl.fromJsonString(String) {
+    print('Creating Private User Object');
+    return new JsonObject.fromJsonString(String, new PrivateUserImpl());
+  }
+}
+
+class CurrentlyPlayingImpl extends JsonObject implements CurrentlyPlayingObject {
+  CurrentlyPlayingImpl();
+  factory CurrentlyPlayingImpl.fromJsonString(String) {
+    print('Creating CurrentlyPlayingObject');
+    return new JsonObject.fromJsonString(String, new CurrentlyPlayingImpl());
   }
 }
