@@ -3,6 +3,8 @@
 
 import 'dart:core';
 
+import 'package:json_object/json_object.dart';
+
 class AuthenticationObject {
   String code;
   String state;
@@ -21,7 +23,7 @@ class CodeObject {
   String refresh_token;
 }
 
-class FullAlbumObject {
+abstract class FullAlbumObject {
   String album_type;
   List<SimplifiedArtistObject> artists;
   List<String> available_markets;
@@ -42,7 +44,7 @@ class FullAlbumObject {
   String uri;
 }
 
-class SimplifiedArtistObject {
+ abstract class SimplifiedArtistObject {
   ExternalUrlObject external_urls;
   String href;
   String id;
@@ -51,28 +53,28 @@ class SimplifiedArtistObject {
   String uri;
 }
 
-class ExternalUrlObject {
+abstract class ExternalUrlObject {
   String key;
   String value;
 }
 
-class CopyrightObject {
+abstract class CopyrightObject {
   String text;
   String type;
 }
 
-class ExternalIdObject {
+abstract class ExternalIdObject {
   String key;
   String value;
 }
 
-class ImageObject {
+abstract class ImageObject {
   int height;
   String url;
   int width;
 }
 
-class PagingObject<T> {
+abstract class PagingObject<T> {
   String href;
   List<T> items;
   int limit;
@@ -82,7 +84,7 @@ class PagingObject<T> {
   int total;
 }
 
-class SimplifiedTrackObject {
+abstract class SimplifiedTrackObject {
   List<SimplifiedArtistObject> artists;
   List<String> available_markets;
   int disc_number;
@@ -100,10 +102,18 @@ class SimplifiedTrackObject {
   String uri;
 }
 
-class LinkedTrackObject {
+abstract class LinkedTrackObject {
   ExternalUrlObject external_urls;
   String href;
   String id;
   String type;
   String uri;
+}
+
+class FullAlbumImpl extends JsonObject implements FullAlbumObject {
+  FullAlbumImpl();
+  factory FullAlbumImpl.fromJsonString(String) {
+    print("Creating FullAlbumObject");
+    return new JsonObject.fromJsonString(String, new FullAlbumImpl());
+  }
 }

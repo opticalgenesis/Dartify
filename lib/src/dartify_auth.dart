@@ -7,7 +7,7 @@ class DartifyAuth {
 
   static String getAuthorizationUrl(String clientId, String redirectUri,
       String scopes, String state) {
-    return 'https://accounts.spotify.com/authorize?response_type=code&client_id=$clientId'
+    return 'https://accounts.spotify.com/authorize?response_type=token&client_id=$clientId'
         '&scope=$scopes&redirect_uri=$redirectUri&state=$state';
   }
 
