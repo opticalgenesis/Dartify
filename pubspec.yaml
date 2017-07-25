@@ -1,6 +1,6 @@
 name: dartify
 description: A Spotify API wrapper, written in Dart.
-version: 0.0.1
+version: 0.0.2
 #homepage: https://www.example.com
 #author: Josh Feltimo <jfeltimo@gmail.com>
 
