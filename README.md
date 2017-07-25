@@ -35,6 +35,13 @@ A simple usage example:
         print(current.item.name);
     }
     
+    // Returns an artist based on it's Spotify ID
+    void getArtistForId() {
+        FullArtistObject artist = DartifyBase.getArtistFromId(accessToken, artistId);
+        // Prints artist's name
+        print(artist.name);
+    }
+    
     // Returns an album based on it's Spotify ID
     void getAlbumForId() {
         FullAlbumObject album = DartifyBase.getAlbumFromId(accessToken, albumId);
