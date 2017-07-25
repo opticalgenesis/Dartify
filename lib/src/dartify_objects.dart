@@ -169,6 +169,19 @@ abstract class ContextObject {
   String type;
 }
 
+abstract class FullArtistObject {
+  Map<String, String> external_urls;
+  FollowersObject followers;
+  List<String> genres;
+  String href;
+  String id;
+  List<ImageObject> images;
+  String name;
+  int popularity;
+  String type;
+  String uri;
+}
+
 class FullAlbumImpl extends JsonObject implements FullAlbumObject {
   FullAlbumImpl();
   factory FullAlbumImpl.fromJsonString(String) {
@@ -190,5 +203,14 @@ class CurrentlyPlayingImpl extends JsonObject implements CurrentlyPlayingObject 
   factory CurrentlyPlayingImpl.fromJsonString(String) {
     print('Creating CurrentlyPlayingObject');
     return new JsonObject.fromJsonString(String, new CurrentlyPlayingImpl());
+  }
+}
+
+class FullArtistImpl extends JsonObject implements FullArtistObject {
+  FullArtistImpl();
+
+  factory FullArtistImpl.fromJsonString(String) {
+    print('Creating FullArtistObject');
+    return new JsonObject.fromJsonString(String, new FullArtistImpl());
   }
 }

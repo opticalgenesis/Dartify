@@ -28,6 +28,19 @@ class DartifyBase {
     return new CurrentlyPlayingImpl.fromJsonString(req.response);
   }
 
+/*  static List<FullAlbumObject> getAlbumsFromIds(String accessToken, String ids) {
+    HttpRequest req = _generateHttpRequest("https://api.spotify.com${DartifyUtils.ALBUMS}$ids", "GET", accessToken);
+    req.send();
+    return new List<>
+  }*/
+
+  static FullArtistObject getArtistFromId(String accessToken, String id) {
+    HttpRequest req = _generateHttpRequest(
+        "https://api.spotify.com${DartifyUtils.ARTIST}$id", "GET", accessToken);
+    req.send();
+    return new FullArtistImpl.fromJsonString(req.response);
+  }
+
   static String getRawResponse(String accessToken, String albumId) {
     HttpRequest req = new HttpRequest();
     req.open("GET", "https://api.spotify.com${DartifyUtils.ALBUM}$albumId", async: false);
